@@ -1,3 +1,8 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +11,7 @@ void main() {
   runApp(new FriendlychatApp());
 }
 
-const String _name = "Justin";
+final googleSignIn = new GoogleSignIn();
 
 final ThemeData kDefaultTheme = new ThemeData(
   primarySwatch: Colors.purple,
@@ -38,12 +43,16 @@ class ChatMessage extends StatelessWidget {
           children: <Widget>[
             new Container(
               margin: const EdgeInsets.only(right: 16.0),
-              child: new CircleAvatar(child: new Text(_name[0])),
+              child: new CircleAvatar(
+                  backgroundImage: new NetworkImage(googleSignIn.currentUser.photoUrl),
+              ),
             ),
             new Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                new Text(_name, style: Theme.of(context).textTheme.subhead),
+                new Text(
+                    googleSignIn.currentUser.displayName,
+                    style: Theme.of(context).textTheme.subhead),
                 new Container(
                   margin: const EdgeInsets.only(top: 5.0),
                   child: new Text(text),
@@ -147,7 +156,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
             )));
   }
 
-  void _handleSubmitted(String text) {
+  Future<Null> _handleSubmitted(String text) async {
     _textController.clear();
     setState(() {
       _isComposing = false;
@@ -157,6 +166,26 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
       text: text,
       animationController: new AnimationController(
           duration: new Duration(milliseconds: 700), vsync: this),
+    );
+    await _ensureLoggedIn();
+    _sendMessage(text: text);
+  }
+
+  Future<Null> _ensureLoggedIn() async {
+    GoogleSignInAccount user = googleSignIn.currentUser;
+    if (user == null)
+      user = await googleSignIn.signInSilently();
+    if (user == null)
+      await googleSignIn.signIn();
+  }
+
+  void _sendMessage({String text}) {
+    ChatMessage message = new ChatMessage(
+      text: text,
+      animationController: new AnimationController(
+        vsync: this,
+        duration: new Duration(milliseconds: 700),
+      ),
     );
     setState(() {
       _messages.insert(0, message);

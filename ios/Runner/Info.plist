@@ -45,5 +45,17 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-</dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.601814308391-0v6aq4b810hqee7llihisti2hs6cs3u9</string>
+				<string>name.smithjn.chatApp</string>
+			</array>
+		</dict>
+	</array>
+	</dict>
 </plist>

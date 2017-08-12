@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "601814308391",
+    "firebase_url": "https://my-frinedly-chat-app.firebaseio.com",
+    "project_id": "my-frinedly-chat-app",
+    "storage_bucket": "my-frinedly-chat-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:601814308391:android:6139c947290a7e4d",
+        "android_client_info": {
+          "package_name": "com.yourcompany.myfriendlychat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "601814308391-vpsobbjv0hhlcq9jn61jd6quv6o6jo20.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yourcompany.myfriendlychat",
+            "certificate_hash": "c245b70768286588ce1d2fe41c3eb845338b1356"
+          }
+        },
+        {
+          "client_id": "601814308391-om78uslemto62am3si22vjlt0t03akei.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAenHiUypA-MUxcVROEcKe83J8_cI6DsC0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "601814308391-om78uslemto62am3si22vjlt0t03akei.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "601814308391-0v6aq4b810hqee7llihisti2hs6cs3u9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "name.smithjn.chatApp"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
